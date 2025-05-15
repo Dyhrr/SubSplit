@@ -1,0 +1,8 @@
+{
+  "model": "large",
+  "max_threads": 2,
+  "output_dir": "",
+  "watch_folder": false,
+  "watch_path": "",
+  "openai_api_key": "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"
+}
