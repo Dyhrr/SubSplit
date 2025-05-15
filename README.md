@@ -70,11 +70,11 @@ UI is “functional” but not emotionally supportive (yet).
 No unit tests (yet). Sue me.
 
 ## 🧙 Author
-# Nick / Dyhrrr
+### Nick / Dyhrrr**
 Dev.
 Creates tools for others, forgets to finish my own.
 Sleeps on the floor, but builds like a king.
 
-
+💬 Got feedback or want to open an issue? Click here to yell at me.
 
 ---
