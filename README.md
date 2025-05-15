@@ -53,6 +53,7 @@ python cli.py
   ❗ You’ll need Whisper + FFmpeg installed separately. Google is your friend. Or not. I’m not your dad.
 
 ##📦 Roadmap
+
 🔲 OBS Replay Buffer integration
 
 🔲 Funny moment detection system
