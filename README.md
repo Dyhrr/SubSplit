@@ -62,7 +62,7 @@ python cli.py
 
 🔲 Optional turtle mascot (probably cursed)
 
-##🐞 Known Issues
+## 🐞 Known Issues
 Whisper large model may break your Raspberry Pi and your spirit.
 
 UI is “functional” but not emotionally supportive (yet).
