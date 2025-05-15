@@ -1,90 +1,68 @@
-# Whisper Transcriber
+# 🟪 SubSplit
 
-A modular transcription tool using OpenAI Whisper with a GUI and CLI interface.
+### "Because your clips deserve more than subtitles thrown on with a prayer."
 
-## Requirements
+**SubSplit** is a dark-mode-only, GPU-aware, multi-threaded subtitle generation tool built for content creators who are tired of basic captions and even more tired of doing it manually.
 
-Install dependencies:
+Powered by [OpenAI's Whisper](https://github.com/openai/whisper), SubSplit doesn't just transcribe. It:
+- Detects who's talking (yes, multiple speakers—imagine that).
+- Assigns each speaker a color (because you’re not a robot).
+- Embeds fully stylized, readable subtitles back into the video.
+- Supports multiple video/audio files at once.
+- Gives you a slick UI, drag-and-drop ease, and background task handling with ETA tracking.
+
+## ⚙️ Features
+
+- 🎤 **Diarization** — Separate speakers like a courtroom drama.
+- 🎨 **Color-coded Subtitles** — Each voice gets its own shade. You’re welcome.
+- 🎛️ **Custom Whisper Settings** — Control which Whisper model you use, temp folder paths, and language.
+- 📁 **Multi-file Support** — Process all your unedited chaos at once.
+- 🧠 **Error Handling + Logs** — Because real devs build for when stuff breaks.
+- 💻 **Dark Mode UI** — If you use light mode, this isn't for you.
+- 🐢 **Built for Creators** — Especially if you’re broke, tired, or allergic to Premiere Pro.
+
+## 🧠 Tech Stack
+
+- **Python** (obviously)
+- **Whisper** (for transcribing)
+- **PyQt6** (for GUI)
+- **FFmpeg** (for audio/video handling)
+- **You, panicking at 3AM** (for inspiration)
+
+## 🖥️ Screenshot
+
+*Coming soon—because screenshots require effort and you’re reading this instead of contributing.*
+
+## 🚀 Getting Started
+
+Clone it. Run it. Watch the magic.
 
 ```bash
+git clone https://github.com/Dyhrr/SubSplit
+cd SubSplit
 pip install -r requirements.txt
-```
-
-## Configuration
-
-Edit `config.json` to set:
-
-- `model`: Whisper model size (`tiny`, `base`, `small`, `medium`, `large`)
-- `max_threads`: Maximum concurrent transcription jobs
-- `output_dir`: Folder where transcripts and summaries are saved
-- `watch_folder`: `true` to enable watch-folder mode on startup
-- `watch_path`: Directory path to monitor for new audio/video files
-- `openai_api_key`: Your OpenAI API key (for auto-summarization)
-
-## CLI Usage
-
-Transcribe files in headless mode:
-
-```bash
-python cli.py --cli --files /path/to/file1.mp3 /path/to/file2.wav --out /path/to/output --verbose
-```
-
-- `--cli`: Use command-line mode (no GUI)
-- `--files`: One or more input files
-- `--out`: Output directory override
-- `--verbose`: Print detailed status and errors
-
-## GUI Usage
-
-Launch the graphical interface:
-
-```bash
 python cli.py
 ```
+Whisper and FFmpeg must be installed separately. Google is your friend. Or not. I’m not your dad.
 
-### GUI Features
+📦 Roadmap
+OBS Replay Buffer integration
 
-- **Select Clips**: Choose files to transcribe  
-- **Set Output Directory**: Configure where transcripts go  
-- **Start Transcription**: Begin batch processing  
-- **Retry Failed Files**: Retry any that errored  
-- **Clear Logs**: Remove old log files  
-- **Toggle Watch**: Enable/disable watch-folder mode  
-- **Minimize to Tray**: Send GUI to system tray  
-- **Quit**: Exit the application  
+Highlight system triggers
 
-A per-file status and overall progress bar display live updates.
+Full web version (eventually)
 
-## Watch-Folder Mode
+Optional turtle mascot (probably cursed)
 
-If enabled in `config.json` or via **Toggle Watch**, the tool monitors `watch_path` and auto-processes new files dropped into that folder.
+🐞 Known Issues
+Whisper large model may break your Pi and your spirit.
 
-## Archive Management
+UI is “functional” but not emotionally supportive yet.
 
-Transcript folders older than 7 days are automatically zipped into `<output_dir>/archive/YYYY-MM-DD.zip` and removed, keeping your storage organized.
+No unit tests (yet). Sue me.
 
-## Project Structure
-
-- `config.py` – load and validate settings  
-- `db.py` – SQLite database layer  
-- `transcribe.py` – core transcription, diarization, and summarization  
-- `watcher.py` – folder watching and archival logic  
-- `gui.py` – Tkinter GUI and system tray integration  
-- `cli.py` – command-line entrypoint  
-- `logging_config.py` – centralized logging setup  
-- `requirements.txt` – Python dependencies  
-- `README.md` – this documentation  
-- `config.json` – user-editable settings  
-
-## Logging
-
-Logs are written to both the console and `logs/app.log` (rotated, max 5MB per file, 5 backups).
-
-## Troubleshooting
-
-- **Missing OpenAI key**: Summaries are skipped if `openai_api_key` is empty.  
-- **Model load errors**: Check that `torch` can access CUDA or CPU properly.  
-- **Permission issues**: Ensure the script has write access to `output_dir` and `logs/`.  
-- **Watch errors**: Verify `watch_path` exists and `watch_folder` is true.
-
-Enjoy streamlined, automated transcriptions!
+🧙 Author
+Nick / Dyhrrr
+Dev.
+Creates tools for others, forgets to finish my own.
+Sleeps on the floor, but builds like a king.
