@@ -78,3 +78,9 @@ Sleeps on the floor, but builds like a king.
 💬 Got feedback or want to open an issue? [Click here to yell at me.](https://github.com/Dyhrr/SubSplit/issues)
 
 ---
+
+## 🛡 License
+
+This project is licensed under the [MIT License](LICENSE).  
+Use it, improve it, credit it. Don’t be a jerk.
+
