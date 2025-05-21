@@ -39,3 +39,5 @@ UnboundLocalError: cannot access local variable 'summary' where it is not associ
 2025-05-21 21:09:42 [INFO] transcriber: Loading diarization pipeline 'pyannote/speaker-diarization'
 2025-05-21 21:13:35 [INFO] transcriber: Successfully processed temp/f43c7242-7a79-4b96-ba10-a0d6bdc3a4f5_videoplayback (1).mp4 -> temp\2025-05-21\f43c7242-7a79-4b96-ba10-a0d6bdc3a4f5_videoplayback (1).txt
 2025-05-21 21:20:10 [INFO] transcriber: Loading Whisper model 'large' on device cuda
+2025-05-21 22:01:12 [INFO] transcriber: Loading Whisper model 'large' on device cuda
+2025-05-21 22:04:43 [INFO] transcriber: Loading Whisper model 'large' on device cuda

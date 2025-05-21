@@ -40,7 +40,7 @@ document.getElementById("submitBtn").addEventListener("click", async () => {
   }
 
   // Reset
-  statusText.textContent = "Uploading...";
+ statusText.innerHTML = "⏳ <em>Uploading your file...</em>";
   progressContainer.classList.remove("hidden");
   progressBar.style.width = "10%";
 
@@ -57,14 +57,72 @@ document.getElementById("submitBtn").addEventListener("click", async () => {
     progressBar.style.width = "90%";
 
     if (res.ok) {
-      statusText.textContent = "Done! Subtitles burned in.";
+      statusText.innerHTML = "✅ <strong>Done! Subtitles burned in.</strong>"
       progressBar.style.width = "100%";
     } else {
-      statusText.textContent = "Something went wrong.";
+      statusText.innerHTML = "❌ Something went wrong. Try again.";
       progressBar.style.width = "0%";
     }
   } catch (err) {
     statusText.textContent = "Error occurred during upload.";
     progressBar.style.width = "0%";
+  }
+});
+
+
+particlesJS("particles-js", {
+  "particles": {
+    "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
+    "color": { "value": "#00b894" },
+    "opacity": { "value": 0.4 },
+    "size": { "value": 3 },
+    "move": { "enable": true, "speed": 0.6 }
+  },
+  "interactivity": {
+    "events": { "onhover": { "enable": true, "mode": "repulse" } }
+  }
+});
+
+
+particlesJS("particles-js", {
+  particles: {
+    number: { value: 30, density: { enable: true, value_area: 800 } },
+    color: { value: "#10b981" },
+    shape: { type: "circle" },
+    opacity: { value: 0.25 },
+    size: { value: 2 },
+    move: { enable: true, speed: 0.6 }
+  },
+  interactivity: {
+    events: {
+      onhover: { enable: true, mode: "repulse" }
+    }
+  }
+});
+
+
+// Drag & Drop Setup
+const dropZone = document.getElementById("dropZone");
+const fileInput = document.getElementById("fileInput");
+
+dropZone.addEventListener("dragover", (e) => {
+  e.preventDefault();
+  dropZone.classList.add("bg-emerald-800/20");
+});
+
+dropZone.addEventListener("dragleave", () => {
+  dropZone.classList.remove("bg-emerald-800/20");
+});
+
+dropZone.addEventListener("drop", (e) => {
+  e.preventDefault();
+  dropZone.classList.remove("bg-emerald-800/20");
+
+  const droppedFiles = e.dataTransfer.files;
+  if (droppedFiles.length) {
+    fileInput.files = droppedFiles;
+
+    // Optionally auto-submit
+    document.getElementById("submitBtn").click();
   }
 });
