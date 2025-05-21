@@ -2,43 +2,45 @@
 
 ### **"Because your clips deserve more than subtitles thrown on with a prayer."**
 
-**SubSplit** is a dark-mode-only, GPU-aware, multi-threaded subtitle generation tool built for content creators who are tired of basic captions—and even more tired of doing it manually.
+**SubSplit** is a local-first, GPU-aware subtitle tool made for streamers, YouTubers, and overengineers who'd rather automate their captions than ever open Premiere Pro again.
 
-Powered by [OpenAI's Whisper](https://github.com/openai/whisper), SubSplit doesn’t just transcribe. It:
+Powered by [OpenAI's Whisper](https://github.com/openai/whisper) and [PyAnnote](https://github.com/pyannote/pyannote-audio), SubSplit doesn't just slap text on screen:
 
-- 🧠 Detects who’s talking (yes, multiple speakers—imagine that).
-- 🎨 Assigns each speaker a unique color (because you’re not a robot).
-- 🖋️ Embeds clean, stylized subtitles back into your video.
-- 📂 Supports multiple video/audio files at once.
-- 🖱️ Offers drag-and-drop ease with real-time ETA tracking.
-
----
-
-## ⚙️ Features
-
-- 🎤 **Diarization** — Separate speakers like a courtroom drama.  
-- 🎨 **Color-coded Subtitles** — Each voice gets its own shade.  
-- 🧪 **Custom Whisper Settings** — Choose model, temp folder, language.  
-- 📁 **Multi-file Support** — Process chaos in bulk.  
-- 🧠 **Error Logs** — Because things break and you deserve answers.  
-- 💻 **Dark Mode Only** — If you use light mode, this isn’t for you.  
-- 🐢 **Built for Creators** — Especially the broke, the tired, and the allergic to Premiere Pro.  
+- 🧠 **Diarizes** who's talking—even in chaotic Discord calls.
+- 🎨 **Color-codes** speakers for clarity (WIP).
+- 🖋️ **Burns clean .ass subtitles** into your video with FFmpeg.
+- 🔄 **Processes multiple files** in batches.
+- 🖱️ **Drag-and-drop UI** with ETA and job feedback.
 
 ---
 
-## 🧠 Tech Stack
+## ⚙️ Features (Working)
 
-- **Python** (obviously)  
-- **Whisper** (for transcribing)  
-- **PyQt6** (UI... for now 👀)  
-- **FFmpeg** (for all your .mp4 sins)  
-- **You, panicking at 3AM** (optional but encouraged)  
+- 🎤 **Speaker Diarization** — Detect and separate speakers.
+- 🧠 **Whisper Transcription** — Uses large model locally via GPU.
+- 🔥 **Replay-buffer‑friendly Design** — Fast processing, no cloud calls.
+- 💾 **Embedded Subtitle Export** — .ass subtitles burned directly into MP4.
+- ⚫ **Dark Mode UI** — Built-in and non-negotiable.
+- 🧠 **Local Database** — Keeps track of processed videos.
 
 ---
 
-## 🖥️ Screenshot
+## 🚧 Work In Progress
 
-*Coming soon—because screenshots require effort, and you’re reading this instead of contributing.*
+- 🎨 Per-speaker subtitle color styling
+- 🧪 Funny moment detection / smart highlight tagging
+- 🪄 OBS Replay Buffer Marker integration
+- 🖼️ UI polish: logo display, progress bar improvements
+- 🗂️ Folder watcher + auto-process queue
+- 🧠 WebSocket-powered Web UI (React/Tailwind rewrite plan)
+
+---
+
+## 🖥️ Showcase (WIP UI)
+
+![SubSplit UI](assets/ui_preview.png)
+
+UI built with plain HTML + TailwindCSS for now. No build step, just vibes.
 
 ---
 
@@ -48,39 +50,59 @@ Powered by [OpenAI's Whisper](https://github.com/openai/whisper), SubSplit doesn
 git clone https://github.com/Dyhrr/SubSplit
 cd SubSplit
 pip install -r requirements.txt
-python cli.py
+python run.py  # or cli.py if you're hardcore
 ```
-  ❗ You’ll need Whisper + FFmpeg installed separately. Google is your friend. Or not. I’m not your dad.
+
+❗ Make sure you have:
+- [FFmpeg](https://ffmpeg.org/download.html) in PATH
+- HuggingFace token for diarization model
+- Whisper + Torch installed
+
+---
+
+## 🧠 Tech Stack
+
+- 🐍 **Python 3.11**
+- 🔊 **Whisper (large)** — Transcription
+- 🧍 **PyAnnote** — Diarization
+- 🎨 **ASS subtitles** — Color-ready format
+- 🎥 **FFmpeg** — Video burn-in
+- 🖥️ **Tailwind UI** — Basic dark-mode frontend
+- ⚙️ **FastAPI + Uvicorn** — Local API layer
+
+---
 
 ## 📦 Roadmap
 
-🔲 OBS Replay Buffer integration
+- [ ] OBS Replay Buffer marker extraction
+- [ ] Color-coded speaker styles in subtitles
+- [ ] Highlight tagging & smart funny-moment clustering
+- [ ] Web interface using React + shadcn/ui
+- [ ] Auto-installer + packaging with PyInstaller
+- [ ] Voice separation pre-processing (experimental)
 
-🔲 Funny moment detection system
-
-🔲 Full web version rewrite
-
-🔲 Optional turtle mascot (probably cursed)
+---
 
 ## 🐞 Known Issues
-Whisper large model may break your Raspberry Pi and your spirit.
 
-UI is “functional” but not emotionally supportive (yet).
+- 🧠 PyAnnote model is from 0.x — expect logs to whine about version mismatch.
+- 🖼️ Some .svg logos render oddly in-app, may fallback to .png.
+- 💥 Using large Whisper model without GPU will destroy your will to live.
 
-No unit tests (yet). Sue me.
+---
 
 ## 🧙 Author
-### Nick / Dyhrrr **
-Dev.
-Creates tools for others, forgets to finish my own.
-Sleeps on the floor, but builds like a king.
 
-💬 Got feedback or want to open an issue? [Click here to yell at me.](https://github.com/Dyhrr/SubSplit/issues)
+### Nick / Dyhrrr
+
+Builder. Breaker. Tweaker. Danish. Not a UX designer.
+
+📬 Want to flame, help, or say hi? [Open an issue](https://github.com/Dyhrr/SubSplit/issues)
 
 ---
 
 ## 🛡 License
 
-This project is licensed under the [MIT License](LICENSE).  
-Use it, improve it, credit it. Don’t be a jerk.
+MIT License. No bullshit. Attribution appreciated.
 
+Use it, improve it, ship it. Just don’t resell it as a SaaS and pretend you built it alone.

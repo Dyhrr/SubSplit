@@ -1,7 +1,57 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #121212;
-    color: #eee;
-    text-align: center;
-    padding: 20px;
+  background-color: #121212;
+  color: #e0e0e0;
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+  background: #1e1e1e;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+  font-weight: 700;
+}
+
+.subtitle {
+  font-size: 16px;
+  margin-bottom: 32px;
+  color: #999;
+}
+
+input[type="file"] {
+  margin-bottom: 20px;
+  color: #ccc;
+}
+
+button {
+  background-color: #00b894;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: #019875;
+}
+
+#statusText {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #888;
 }

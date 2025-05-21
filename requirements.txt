@@ -1,9 +1,7 @@
-<<<<<<< HEAD
 fastapi
 uvicorn
 pywebview
 python-multipart
-=======
 openai
 whisper
 torch
@@ -12,4 +10,3 @@ watchdog
 pystray
 plyer
 pydub
->>>>>>> ce49fc3502aaf54a09ef998f06fe78c129537617
