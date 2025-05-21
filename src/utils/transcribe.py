@@ -181,3 +181,42 @@ def process_file(path, outdir):
                     os.remove(tmp_path)
                 except Exception:
                     pass
+
+
+import subprocess
+import os
+
+def transcribe_video(input_path: str) -> str:
+    # Generate paths
+    base = os.path.splitext(os.path.basename(input_path))[0]
+    ass_path = f"temp/{base}.ass"
+    output_path = f"temp/{base}_subtitled.mp4"
+
+    # TEMP: Dummy .ass subtitle file for testing
+    os.makedirs("temp", exist_ok=True)
+    with open(ass_path, "w", encoding="utf-8") as f:
+        f.write("""
+[Script Info]
+Title: SubSplit Subs
+ScriptType: v4.00+
+
+[V4+ Styles]
+Format: Name, Fontname, Fontsize, PrimaryColour, OutlineColour, Bold, Italic, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
+Style: Default,Arial,24,&H00FFFFFF,&H00000000,-1,0,1,1.5,0,2,10,10,10,1
+
+[Events]
+Format: Layer, Start, End, Style, Text
+Dialogue: 0,0:00:00.00,0:00:05.00,Default,Welcome to SubSplit!
+Dialogue: 0,0:00:05.00,0:00:10.00,Default,Your subtitles are now hardcoded.
+""")
+
+    # Burn subtitles into video
+    subprocess.run([
+        "ffmpeg", "-y",
+        "-i", input_path,
+        "-vf", f"ass={ass_path}",
+        "-c:a", "copy",
+        output_path
+    ], check=True)
+
+    return output_path

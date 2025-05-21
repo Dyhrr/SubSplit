@@ -1,8 +1,4 @@
-openai
-whisper
-torch
-pyannote.audio
-watchdog
-pystray
-plyer
-pydub
+fastapi
+uvicorn
+pywebview
+python-multipart
