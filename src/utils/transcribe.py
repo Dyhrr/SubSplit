@@ -75,7 +75,14 @@ def process_file(path, outdir):
                 for turn, _, speaker in diar.itertracks(yield_label=True):
                     seg_texts = []
                     for ws in whisper_segments:
-                        if ws['start'] >= turn.start and ws['start'] <= turn.end:
+                        ws_start = ws['start']
+                        ws_end = ws['end']
+                        turn_start = turn.start
+                        turn_end = turn.end
+                        
+                        overlap = max(0, min(ws_end, turn_end) - max(ws_start, turn_start))
+                        duration = ws_end - ws_start
+                        if overlap / duration > 0.3:  # 30% overlap threshold
                             seg_texts.append(ws['text'].strip())
                     combined = " ".join(seg_texts).strip()
                     if combined:
